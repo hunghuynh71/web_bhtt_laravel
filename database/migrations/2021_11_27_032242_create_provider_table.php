@@ -20,10 +20,9 @@ class CreateProviderTable extends Migration
             $table->string('email',100)->unique();
             $table->string('address',50);
             $table->enum('status',[1,2])->comment('1:Hiện, 2:Ẩn')->default(1);
-
-            $table->foreignId('province_id')->references('id')->on('tbl_province')->onDelete('cascade');
-            $table->foreignId('district_id')->references('id')->on('tbl_district')->onDelete('cascade');
-            $table->foreignId('ward_id')->references('id')->on('tbl_ward')->onDelete('cascade');
+            $table->unsignedBigInteger('province_id');
+            $table->unsignedBigInteger('district_id');
+            $table->unsignedBigInteger('ward_id');
         });
     }
 

@@ -23,6 +23,7 @@ class CreatePromotionTable extends Migration
             $table->integer('qty');
             $table->date('start_day');
             $table->date('end_day');
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->enum('status',[1,2])->comment('1:Chờ duyệt, 2:Đã được duyệt')->default(1);
             $table->timestamps();
         });

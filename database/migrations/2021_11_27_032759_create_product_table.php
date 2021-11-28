@@ -18,10 +18,10 @@ class CreateProductTable extends Migration
             $table->string('name',50);
             $table->string('slug',60);
             $table->string('thumb',150);
-            $table->string('shortDesc',200);
-            $table->text('detailDesc');
+            $table->string('short_desc',200);
+            $table->text('detail_desc');
             $table->double('price');
-            $table->double('priceCost');
+            $table->double('price_cost');
             $table->integer('warranty');
             $table->integer('view')->default(0);
             $table->enum('status',[1,2])->comment('1:Chờ duyệt, 2:Đã được duyệt')->default(1);
@@ -29,6 +29,7 @@ class CreateProductTable extends Migration
             $table->softDeletes();
 
             $table->foreignId('product_category_id')->references('id')->on('tbl_product_category')->onDelete('cascade');
+            $table->foreignId('brand_id')->references('id')->on('tbl_brand')->onDelete('cascade');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }

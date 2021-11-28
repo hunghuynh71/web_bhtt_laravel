@@ -18,7 +18,7 @@ class CreatePostTable extends Migration
             $table->string('name',100);
             $table->string('slug',120);
             $table->string('thumb',150);
-            $table->string('shortDesc',200);
+            $table->string('short_desc',200);
             $table->text('content');
             $table->integer('view')->default(0);
             $table->enum('status',[1,2])->comment('1:Chờ duyệt, 2:Đã được duyệt')->default(1);
