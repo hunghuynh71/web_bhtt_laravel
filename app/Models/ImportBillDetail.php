@@ -13,7 +13,7 @@ class ImportBillDetail extends Model
     protected $fillable = [
         'id',
         'import_bill_id',
-        'product_size_id',
+        'product_detail_id',
         'price',
         'qty'
     ];
@@ -22,7 +22,7 @@ class ImportBillDetail extends Model
         return $this->belongsTo(ImportBill::class,'import_bill_id','id');
     }
 
-    public function product_size(){
-        return $this->belongsTo(ProductSize::class,'product_size_id','id');
+    public function product_detail(){
+        return $this->belongsTo(ProductDetail::class,'product_detail_id','id');
     }
 }

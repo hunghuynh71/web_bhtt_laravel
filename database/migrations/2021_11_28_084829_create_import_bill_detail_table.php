@@ -15,12 +15,12 @@ class CreateImportBillDetailTable extends Migration
     {
         Schema::create('tbl_import_bill_detail', function (Blueprint $table) {
             $table->id();
-            $table->unique(['id','import_bill_id','product_size_id']);
+            $table->unique(['id','import_bill_id','product_detail_id'],'tbl_import_bill_detail_id_importBillId_productDetailId_unique');
             $table->double('price');
             $table->integer('qty');
 
             $table->foreignId('import_bill_id')->references('id')->on('tbl_import_bill')->onDelete('cascade');
-            $table->foreignId('product_size_id')->references('id')->on('tbl_product_size')->onDelete('cascade');
+            $table->foreignId('product_detail_id')->references('id')->on('tbl_product_detail')->onDelete('cascade');
         });
     }
 
@@ -31,8 +31,6 @@ class CreateImportBillDetailTable extends Migration
      */
     public function down()
     {
-        Schema::table('tbl_import_bill_detail', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('import_bill_detail');
     }
 }

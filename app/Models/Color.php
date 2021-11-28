@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Size extends Model
+class Color extends Model
 {
     use HasFactory;
 
-    protected $table = 'tbl_size';
+    protected $table = 'tbl_color';
     protected $fillable = [
         'id',
         'name',
@@ -17,6 +17,6 @@ class Size extends Model
     ];
 
     public function product_details(){
-        return $this->hasMany(ProductDetail::class,'size_id','id');
+        return $this->hasMany(ProductDetail::class,'color_id','id');
     }
 }

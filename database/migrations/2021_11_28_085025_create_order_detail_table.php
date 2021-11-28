@@ -15,12 +15,12 @@ class CreateOrderDetailTable extends Migration
     {
         Schema::create('tbl_order_detail', function (Blueprint $table) {
             $table->id();
-            $table->unique(['id','order_id','product_size_id']);
+            $table->unique(['id','order_id','product_detail_id']);
             $table->double('price');
             $table->double('price_cost');
             $table->integer('qty');
             $table->foreignId('order_id')->references('id')->on('tbl_order')->onDelete('cascade');
-            $table->foreignId('product_size_id')->references('id')->on('tbl_product_size')->onDelete('cascade');
+            $table->foreignId('product_detail_id')->references('id')->on('tbl_product_detail')->onDelete('cascade');
         });
     }
 
@@ -31,8 +31,6 @@ class CreateOrderDetailTable extends Migration
      */
     public function down()
     {
-        Schema::table('tbl_order_detail', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('order_detail');
     }
 }

@@ -47,7 +47,7 @@ class Product extends Model
         return $this->belongsToMany(Provider::class,'tbl_product_provider','product_id','provider_id');
     }
 
-    public function sizes(){
-        return $this->belongsToMany(Size::class,'tbl_product_size','product_id','size_id');
+    public function product_details(){
+        return $this->hasMany(ProductDetail::class,'product_id','id');
     }
 }
