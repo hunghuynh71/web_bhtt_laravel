@@ -19,7 +19,7 @@ class CreateOrderTable extends Migration
             $table->string('name',50);
             $table->string('phone',12)->unique();
             $table->string('address',50);
-            $table->string('promo_code',50);
+            $table->string('promo_code',50)->nullable();
             $table->double('promo_money')->default(0);
             $table->double('feeship')->default(0);
             $table->double('vat')->default(0);
@@ -30,9 +30,9 @@ class CreateOrderTable extends Migration
             $table->integer('admin_id')->nullable();            
             $table->enum('status',[1,2,3,4])->comment('1:Chờ xử lý, 2:Đã xử lý, 3:Hủy, 4:Đổi trả')->default(1);
             $table->timestamps();
-            $table->foreignId('province_id')->references('id')->on('tbl_province')->onDelete('cascade');
-            $table->foreignId('district_id')->references('id')->on('tbl_district')->onDelete('cascade');
-            $table->foreignId('ward_id')->references('id')->on('tbl_ward')->onDelete('cascade');
+            $table->unsignedBigInteger('province_id');
+            $table->unsignedBigInteger('district_id');
+            $table->unsignedBigInteger('ward_id');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
